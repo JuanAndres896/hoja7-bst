@@ -95,4 +95,79 @@ public class Diccionario {
             insertarNodo(padre.right(),dato);
         }
     }
+     
+    
+    public String traducirPalabra(BinaryTree<Association<String,String>> parent, String palabra){
+        String palabraTraducida = "";
+        Association<String,String> asociacion = parent.value();
+        String parentKey = asociacion.getKey();
+        int n = parentKey.compareToIgnoreCase(palabra);
+        if(n==0){
+            palabraTraducida = parent.value().getValue();
+        }
+        if(n<0){
+            if(parent.right()!=null){
+                palabraTraducida = traducirPalabra(parent.right(),palabra);
+            }else{
+                return("*"+palabra+"*");
+            }
+        }
+        if(n>0){
+            if(parent.left()!=null){
+                palabraTraducida = traducirPalabra(parent.left(),palabra);
+            }else{
+                return("*"+palabra+"*");
+            }
+        }
+        return palabraTraducida;
+    }
+    public void traducirOracion(){
+        leerOracion();
+        String resultado ="";
+        for(int i=0; i<oracion.size();i++){
+            resultado+=traducirPalabra(raiz,oracion.get(i).trim())+"";
+        }
+        System.out.println(resultado);
+    }
+    public void leerOracion(){
+        String palabras="";
+        try {
+           // Apertura del fichero y creacion de BufferedReader para poder
+           // hacer una lectura comoda (disponer del metodo readLine())
+           archivo = new File ("C:\\Users\\Rodrigo\\Documents\\2do ciclo 2016\\ADT\\hoja7-bst\\HDT7\\src\\texto.txt");
+           fr = new FileReader (archivo);
+           br = new BufferedReader(fr);
+
+           // Lectura del fichero
+           String linea;
+           int ind=0;
+           while((linea=br.readLine())!=null){
+              	palabras=linea;
+           }
+        }
+        catch(Exception e){
+           e.printStackTrace();
+        }finally{
+           // En el finally cerramos el fichero, para asegurarnos
+           // que se cierra tanto si todo va bien como si salta 
+           // una excepcion.
+           try{                    
+              if( null != fr ){   
+                 fr.close();     
+              }                  
+           }catch (Exception e2){ 
+              e2.printStackTrace();
+           }
+        while(palabras.compareTo("")!=0){
+	int lugar=palabras.indexOf(' ');
+            if(lugar!=-1){
+                    oracion.add(palabras.substring(0,lugar));
+                    palabras=palabras.substring(lugar+1);
+            }else{
+                    oracion.add(palabras);
+                    palabras="";
+            }
+        }
+        }
+    }
 }

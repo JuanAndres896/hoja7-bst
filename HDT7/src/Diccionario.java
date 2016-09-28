@@ -22,6 +22,8 @@ public class Diccionario {
         raiz=new BinaryTree<Association<String,String>>(null, null, null, null);
         //Se realizan los metodos para obtener todas las palabras del diccionario y traducir el archivo texto.txt
         llenarDiccionario();
+        System.out.println("A continuacion se muestran las palabras del diccionario:");
+        imprimirArbol(raiz);
         traducirOracion();
     }
     
@@ -95,8 +97,18 @@ public class Diccionario {
             insertarNodo(padre.right(),dato);
         }
     }
-     
-    
+    //Este metodo recorre el arbol in-order e imprimer todos sus nodos
+    public void imprimirArbol(BinaryTree<Association<String,String>> arbol){
+        if(arbol.left() != null){
+            imprimirArbol(arbol.left());
+            System.out.println(arbol.left().value().getKey()+",");
+        }
+        if(arbol.right() != null){
+            imprimirArbol(arbol.right());
+            System.out.println(arbol.right().value().getKey()+",");
+        }
+        System.out.println(arbol.value().getKey()+",");
+    }
     public String traducirPalabra(BinaryTree<Association<String,String>> parent, String palabra){
         String palabraTraducida = "";
         Association<String,String> asociacion = parent.value();

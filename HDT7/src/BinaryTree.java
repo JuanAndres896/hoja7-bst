@@ -1,13 +1,12 @@
 /*
 * Universidad del Valle de Guatemala
 * Algoritmos y Estructuras de Datos - Seccion 31
-* Juan Andrés García - 15046
+* Juan Andres Garcia - 15046
 * Rodrigo Barrios - 15009
 * Guatemala, septiembre 27 de 2016
 */
-
-/* Clase BinaryTree, codigo tomado del libro del curso */
-public class BinaryTree<E> {
+public class BinaryTree<E>
+{
     protected E val; // value associated with node
     protected BinaryTree<E> parent; // parent of node
     protected BinaryTree<E> left, right; // children of node
@@ -61,5 +60,6 @@ public class BinaryTree<E> {
 	// post: sets the value associated with this node
 	{
 		val = value;
-	} 
+	}
+    
 }

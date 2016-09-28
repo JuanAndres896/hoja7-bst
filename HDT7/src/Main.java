@@ -1,20 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Rodrigo
- */
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos - Seccion 31
+* Juan Andres Garcia - 15046
+* Rodrigo Barrios - 15009
+* Guatemala, septiembre 27 de 2016
+*/
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Diccionario miDiccionario = new Diccionario();
     }
     
 }
